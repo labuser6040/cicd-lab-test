@@ -1,0 +1,21 @@
+name: Lab CI System
+
+# Trigger: Run this whenever we push to the 'main' branch
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest  # This tells GitHub to use a Linux VM
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run a fake test
+        run: |
+          echo "Starting the automated test suite..."
+          echo "Checking if test.txt exists..."
+          test -f test.txt
+          echo "Test passed successfully!"
